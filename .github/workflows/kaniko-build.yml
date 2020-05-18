@@ -45,8 +45,6 @@ jobs:
         image: $CI_REGISTRY_IMAGE/dev
         # Image tag
         tag: $CI_COMMIT_SHORT_SHA
-        # Kaniko context
-        context: $KANIKO_CONTEXT
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
