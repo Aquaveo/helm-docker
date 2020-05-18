@@ -16,29 +16,41 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      CI_REGISTRY: ${{ secrets.CI_REGISTRY }} 
-      CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
-      CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
-      CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
-      CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-      KANIKO_DOCKERFILE: Dockerfile
-      KANIKO_CONTEXT:  ${{ secrets.KANIKO_CONTEXT }}
-      KANIKO_DESTINATIONS: ${{ secrets.KANIKO_DESTINATIONS }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
     # Runs a set of commands using the runners shell
-    - name: Build Kaniko Image
-      uses: aevea/action-kaniko@v0.3.2
     - name: Build Commit
-      run: >
-        export KANIKO_CMD="/kaniko/executor 
-        --context $KANIKO_CONTEXT 
-        --dockerfile $KANIKO_DOCKERFILE
-        $(for DEST in $KANIKO_DESTINATIONS; do echo "--destination $DEST "; done)
-        --cache=true
-        --cache-repo $CI_REGISTRY_IMAGE/cache";
-        echo $KANIKO_CMD;
-        $KANIKO_CMD 
+      env:
+        CI_REGISTRY: ${{ secrets.CI_REGISTRY }} 
+        CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+        CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
+        CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
+        CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
+        KANIKO_DOCKERFILE: Dockerfile
+        KANIKO_CONTEXT:  ${{ secrets.KANIKO_CONTEXT }}
+        KANIKO_DESTINATION: ${{ secrets.KANIKO_DESTINATION }}
+      uses: aevea/action-kaniko@v0.3.2
+      with:
+        # Docker registry where the image will be pushed
+        registry: $CI_REGISTRY
+        # Username used for authentication to the Docker registry
+        username: $CI_REGISTRY_USER
+        # Password used for authentication to the Docker registry
+        password: $CI_REGISTRY_PASSWORD
+        # Image name
+        image: $CI_REGISTRY_IMAGE/dev
+        # Image tag
+        tag: $CI_COMMIT_SHORT_SHA
+        # Kaniko context
+        context: $KANIKO_CONTEXT
+        # Enables build cache
+        cache: true
+        # Docker registry meant to be used as cache
+        cache_registry: $CI_REGISTRY_IMAGE/cache
+        # Dockerfile filename
+        build_file: $KANIKO_DOCKERFILE
+        # Additional arguments to be passed to the kaniko executor
