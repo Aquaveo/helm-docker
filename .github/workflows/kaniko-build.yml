@@ -22,11 +22,6 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     
-    - name: test variables
-      env:
-        TEST1: ${{ env.HOME }}/Dockerfile
-      run: echo $TEST1
-    
     # Runs a set of commands using the runners shell
     - name: Build Commit
       env:
