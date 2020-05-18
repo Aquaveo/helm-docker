@@ -26,10 +26,10 @@ RUN set -x \
  && rm -f /var/cache/apk/* \
  # Install python requirements
  && pip install -r /tmp/requirements.txt
-# Setup Helm
-RUN helm init \
- && helm repo add aquaveo $HELM_REPO_HOST \
- && mkdir -p /root/.helm
+## Setup Helm
+#RUN helm init \
+# && helm repo add aquaveo $HELM_REPO_HOST \
+# && mkdir -p /root/.helm
 # Add Helper Utils
 ADD utilities/* /usr/bin/
 RUN chmod 775 /usr/bin/*
