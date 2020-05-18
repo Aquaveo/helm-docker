@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: kaniko_build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a set of commands using the runners shell
+    - name: Build Commit
+      env:
+        CI_REGISTRY: ${{ secrets.CI_REGISTRY }} 
+        CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+        CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
+        CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
+        CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
+        KANIKO_DOCKERFILE: Dockerfile
+        KANIKO_CONTEXT:  ${{ secrets.KANIKO_CONTEXT }}
+        KANIKO_DESTINATION: ${{ secrets.KANIKO_DESTINATION }}
+      uses: aevea/action-kaniko@v0.3.2
+      with:
+        # Docker registry where the image will be pushed
+        registry: $CI_REGISTRY
+        # Username used for authentication to the Docker registry
+        username: $CI_REGISTRY_USER
+        # Password used for authentication to the Docker registry
+        password: $CI_REGISTRY_PASSWORD
+        # Image name
+        image: $CI_REGISTRY_IMAGE/dev
+        # Image tag
+        tag: $CI_COMMIT_SHORT_SHA
+        # Enables build cache
+        cache: true
+        # Docker registry meant to be used as cache
+        cache_registry: $CI_REGISTRY_IMAGE/cache
+        # Dockerfile filename
+        build_file: $KANIKO_DOCKERFILE
+        # Additional arguments to be passed to the kaniko executor
+        extra_args: "--context $KANIKO_CONTEXT --destination $KANIKO_DESTINATION"
