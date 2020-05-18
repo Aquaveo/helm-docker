@@ -21,6 +21,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      
+    - name: test variables
+      env:
+        TEST1: ${{ env.HOME }}
+        TESET2: ${{ env.GITHUB_REPOSITORY }}
+      run: |
+        echo $TEST1
+        echo $TEST2
     
     # Runs a set of commands using the runners shell
     - name: Build Commit
