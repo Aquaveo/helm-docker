@@ -27,6 +27,7 @@ jobs:
         TEST1: ${{ env.HOME }}
         TESET2: ${{ env.GITHUB_REPOSITORY }}
       run: |
+        echo ${{ env.HOME }}
         echo $TEST1
         echo $TEST2
     
@@ -38,7 +39,7 @@ jobs:
         CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
         CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
         CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-        KANIKO_DOCKERFILE: ${{ env.HOME }}/Dockerfile
+        KANIKO_DOCKERFILE: /Aquaveo/helm-docker/Dockerfile
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
