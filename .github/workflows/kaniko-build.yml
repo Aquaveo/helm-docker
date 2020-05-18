@@ -30,9 +30,7 @@ jobs:
         CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
         CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
         CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-        KANIKO_DOCKERFILE: Dockerfile
-        KANIKO_CONTEXT:  ${{ secrets.KANIKO_CONTEXT }}
-        KANIKO_DESTINATION: ${{ secrets.KANIKO_DESTINATION }}
+        KANIKO_DOCKERFILE: ../../Dockerfile
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
@@ -45,8 +43,6 @@ jobs:
         image: $CI_REGISTRY_IMAGE/dev
         # Image tag
         tag: $CI_COMMIT_SHORT_SHA
-        # Kaniko context
-        context: $KANIKO_CONTEXT
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
