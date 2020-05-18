@@ -1,0 +1,12 @@
+#!/bin/sh
+# Take Environmental Variables and use them to set up kubectl
+
+
+set -e  ## Exit on error
+
+kubectl config unset users.default_user
+kubectl config unset users.default_context
+kubectl config set-credentials default_user --username=${K8S_USER} --password=${K8S_PASS}
+kubectl config set-context default_context --user=default_user --namespace=${K8S_NS} --cluster=${K8S_CLUSTER}
+kubectl config use-context default_context
+echo "Setup Complete"

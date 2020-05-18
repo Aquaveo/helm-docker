@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+"""Tools to clean up a gitlab registry."""
+import re
+from urllib.parse import urlparse
+import logging
+import gitlab
+import click
+
+logging.basicConfig(format='%(message)s')
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+
+@click.command()
+@click.option('--api-url', 'api_url', required=True,
+              envvar=["CI_API_V4_URL"],
+              help='Gitlab API Url (e.g. https://example.com:3000/api/v4)')
+@click.option('--token', 'token', required=True, envvar=["GRC_TOKEN"],
+              help='Gitlab API Token')
+@click.option('--project-id', 'project_id', required=True, type=int,
+              envvar=["CI_PROJECT_ID"],
+              help='Gitlab Project ID')
+@click.option('--repository-name', 'repository_name', default=".*",
+              show_default=True, envvar=["GITLAB_REGISTRY_NAME"],
+              help='Gitlab Registry Repository Name Type: Regex')
+@click.argument('tag_name')
+def main(api_url, token, project_id, repository_name, tag_name):
+    """Run."""
+    gitlab_parsed_url = urlparse(api_url)
+    api = gitlab.Gitlab(
+        f"{gitlab_parsed_url.scheme}://{gitlab_parsed_url.netloc}",
+        private_token=token)
+
+    # Get Project
+    try:
+        project = api.projects.get(project_id)
+        logging.info(f'Project: {project.name}')
+    except gitlab.exceptions.GitlabGetError:
+        logging.critical(f'Unable to find project with ID "{project_id}""')
+        return 1  # Failure
+
+    # Get Registries
+    try:
+        repositories = project.repositories.list()
+    except gitlab.exceptions.GitlabListError:
+        logging.critical(f'Unable to find repositories')
+        logging.critical(f'Is Gitlab Registry enabled for project '
+                         f'"{project.name}"?')
+        return 1  # Failure
+
+    logging.info(f'Found {len(repositories)} repositories')
+    for repository in repositories:
+        if re.search(repository_name, repository.name):
+            tags = repository.tags.list()
+            for tag in tags:
+                if re.search(tag_name, tag.name):
+                    logging.info(f"Found tag '{tag_name}'")
+                    return 0  # Success
+
+    logging.error(f"I could not find the docker image for tag '{tag_name}' in "
+                  f"registry '{repository_name}'. You may need to regenerate "
+                  f"it (eg running the build step again).")
+    return 1  # Failure
+
+
+if __name__ == '__main__':
+    exit(main())
+
+# vi:ft=python

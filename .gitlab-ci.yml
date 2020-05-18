@@ -1,0 +1,7 @@
+stages:
+  - Build
+  
+include:
+  - project: 'tethys/kubernetes/gl-k8s-integration'
+    ref: 1.2.0
+    file: '/kaniko-build.yml'
