@@ -22,7 +22,7 @@ jobs:
       CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
       CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
       CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-      KANIKO_DOCKERFILE: $HOME/Dockerfile
+      KANIKO_DOCKERFILE: ${{ HOME }}/Dockerfile
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
