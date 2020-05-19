@@ -43,7 +43,7 @@ jobs:
         # Image name
         image: $KANIKO_IMAGE
         # Image tag
-        tag: $TAG
+        tag: latest
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
