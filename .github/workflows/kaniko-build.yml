@@ -35,13 +35,13 @@ jobs:
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
-        registry: hub.docker.com/r/aquaveollc/helm-docker
+        registry: htran84/
         # Username used for authentication to the Docker registry
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.TRAN_DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        password: ${{ secrets.TRAN_DOCKER_PASSWORD }}
         # Image name
-        image: helm-docker
+        image: test_helm_docker
         # Image tag
         tag: latest
         # Enables build cache
