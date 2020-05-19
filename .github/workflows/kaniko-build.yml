@@ -30,6 +30,7 @@ jobs:
     - name: test variables
       run: |
         ls ${{ env.GITHUB_REPOSITORY }}
+        echo ${{ env.GITHUB_WORKSPACE }}
         ls ${{ env.GITHUB_WORKSPACE }}
     
     # Runs a set of commands using the runners shell
