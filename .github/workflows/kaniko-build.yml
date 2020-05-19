@@ -49,4 +49,4 @@ jobs:
         cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
         build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
-        extra_args: "--workdir ${{ env.HOME }}"
+        extra_args: "--workdir /home/runner/work/helm-docker/helm-docker"
