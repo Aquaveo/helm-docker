@@ -41,12 +41,12 @@ jobs:
         # Password used for authentication to the Docker registry
         password: ${{ secrets.DOCKER_PASSWORD }}
         # Image name
-        image: $KANIKO_IMAGE
+        image: helm_docker
         # Image tag
         tag: latest
         # Enables build cache
-        cache: true
+        cache: false
         # Docker registry meant to be used as cache
-        cache_registry: $KANIKO_CACHE_REGISTRY
+        # cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
         build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
