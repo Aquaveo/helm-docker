@@ -29,13 +29,13 @@ jobs:
     - name: Set Env
       run: |
         echo ::set-env name=KANIKO_CACHE_REGISTRY::helm_docker/cache
-        echo ::set-env name=KANIKO_IMAGE::helm_docker
+        echo ::set-env name=KANIKO_IMAGE::helm-docker
         echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
-        registry: hub.docker.com/orgs/aquaveollc/helm-docker
+        registry: hub.docker.com/orgs/aquaveollc
         # Username used for authentication to the Docker registry
         username: ${{ secrets.DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
