@@ -53,5 +53,5 @@ jobs:
         # Docker registry meant to be used as cache
         cache_registry: $CI_REGISTRY_IMAGE/cache
         # Dockerfile filename
-        build_file: ${{ env.KANIKO_DOCKERFILE }}
+        build_file: $KANIKO_DOCKERFILE
         # Additional arguments to be passed to the kaniko executor
