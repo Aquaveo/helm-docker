@@ -35,7 +35,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Build Commit
       env:
-        KANIKO_DOCKERFILE: ${{ env.GITHUB_REPOSITORY }}
+        KANIKO_DOCKERFILE: ${{ env.GITHUB_REPOSITORY }}/Dockerfile
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
@@ -53,5 +53,5 @@ jobs:
         # Docker registry meant to be used as cache
         cache_registry: $CI_REGISTRY_IMAGE/cache
         # Dockerfile filename
-        build_file: ${{ KANIKO_DOCKERFILE }}/Dockerfile
+        build_file: ${{ env.KANIKO_DOCKERFILE }}
         # Additional arguments to be passed to the kaniko executor
