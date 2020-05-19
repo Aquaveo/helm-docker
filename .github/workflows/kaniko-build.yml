@@ -25,7 +25,7 @@ jobs:
     - name: test variables
       env:
         TEST1: ${{ env.HOME }}
-        TESET2: ${{ env.GITHUB_REPOSITORY }}
+        TEST2: ${{ env.GITHUB_REPOSITORY }}
       run: |
         echo ${{ env.HOME }}
         echo $TEST1
@@ -57,5 +57,5 @@ jobs:
         # Docker registry meant to be used as cache
         cache_registry: $CI_REGISTRY_IMAGE/cache
         # Dockerfile filename
-        build_file: $KANIKO_DOCKERFILE
+        build_file: /Aquaveo/helm-docker/Dockerfile
         # Additional arguments to be passed to the kaniko executor
