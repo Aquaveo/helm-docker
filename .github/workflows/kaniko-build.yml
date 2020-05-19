@@ -10,21 +10,19 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  CI_REGISTRY: ${{ secrets.CI_REGISTRY }} 
-  CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
-  CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
-  CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
-  CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-  KANIKO_DOCKERFILE: ${{ GITHUB_REPOSITORY }}
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+    env:
+      CI_REGISTRY: ${{ secrets.CI_REGISTRY }} 
+      CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+      CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
+      CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
+      CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
+      KANIKO_DOCKERFILE: ${{ GITHUB_REPOSITORY }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
