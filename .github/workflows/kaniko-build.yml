@@ -26,14 +26,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-      
-    - name: test variables
-      run: |
-        #ls ${{ env.GITHUB_REPOSITORY }}
-        #echo ${{ env.GITHUB_WORKSPACE }}
-        #ls ${{ env.GITHUB_WORKSPACE }}
     
-    # Runs a set of commands using the runners shell
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
@@ -53,4 +46,3 @@ jobs:
         cache_registry: $CI_REGISTRY_IMAGE/cache
         # Dockerfile filename
         # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
-        # Additional arguments to be passed to the kaniko executor
