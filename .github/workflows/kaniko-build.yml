@@ -26,7 +26,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
+    - name: Set Env
+      run: |
+        echo ::set-env name=KANIKO_CACHE_REGISTRY::${{ secrets.CI_REGISTRY_IMAGE }}/cache
+        echo ::set-env name=KANIKO_IMAGE::${{ secrets.CI_REGISTRY_IMAGE }}/dev
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
@@ -37,12 +40,12 @@ jobs:
         # Password used for authentication to the Docker registry
         password: ${{ secrets.CI_REGISTRY_PASSWORD }}
         # Image name
-        image: ${{ secrets.CI_REGISTRY_IMAGE }}/dev
+        image: $KANIKO_IMAGE
         # Image tag
         tag: ${{ secrets.CI_COMMIT_SHORT_SHA }}
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
-        cache_registry: ${{ secrets.CI_REGISTRY_IMAGE }}/cache
+        cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
         # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
