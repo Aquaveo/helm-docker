@@ -16,7 +16,7 @@ env:
   CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
   CI_REGISTRY_IMAGE: ${{ secrets.CI_REGISTRY_IMAGE }}
   CI_COMMIT_SHORT_SHA: ${{ secrets.CI_COMMIT_SHORT_SHA }}
-  KANIKO_DOCKERFILE: ${{ env.GITHUB_REPOSITORY }}
+  KANIKO_DOCKERFILE: ${{ GITHUB_REPOSITORY }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
