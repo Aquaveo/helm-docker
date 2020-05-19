@@ -35,7 +35,7 @@ jobs:
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
-        registry: htran84/
+        registry: hub.docker.com/repository/docker/htran84/
         # Username used for authentication to the Docker registry
         username: ${{ secrets.TRAN_DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
