@@ -30,6 +30,7 @@ jobs:
       run: |
         echo ::set-env name=KANIKO_CACHE_REGISTRY::${{ secrets.CI_REGISTRY_IMAGE }}/cache
         echo ::set-env name=KANIKO_IMAGE::${{ secrets.CI_REGISTRY_IMAGE }}/dev
+        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
@@ -42,7 +43,7 @@ jobs:
         # Image name
         image: $KANIKO_IMAGE
         # Image tag
-        tag: $(echo ${GITHUB_REF:10})
+        tag: $TAG
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
