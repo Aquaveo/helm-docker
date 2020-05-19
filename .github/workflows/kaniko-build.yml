@@ -45,7 +45,7 @@ jobs:
         # Image tag
         tag: latest
         # Enables build cache
-        cache: false
+        # cache: false
         # Docker registry meant to be used as cache
         # cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
