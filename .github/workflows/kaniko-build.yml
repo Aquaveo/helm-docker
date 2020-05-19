@@ -48,4 +48,5 @@ jobs:
         # Docker registry meant to be used as cache
         cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
-        # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
+        build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
+        workdir: ${{ env.GITHUB_WORKSPACE }}
