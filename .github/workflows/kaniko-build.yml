@@ -49,4 +49,4 @@ jobs:
         cache_registry: $KANIKO_CACHE_REGISTRY
         # Dockerfile filename
         build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
-        workdir: ${{ env.GITHUB_WORKSPACE }}
+        extra_args: "--workdir ${{ env.GITHUB_WORKSPACE }}"
