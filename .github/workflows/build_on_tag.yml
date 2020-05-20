@@ -31,7 +31,7 @@ jobs:
       run: |
         echo ::set-env name=TAG::${GITHUB_REF:10}
     - name: Set Master Tag
-      if: endsWith(github.ref, "/master")
+      if: endsWith(github.ref, '/master')
       run: |
         echo ::set-env name=TAG::latest
     - name: Test Tag
