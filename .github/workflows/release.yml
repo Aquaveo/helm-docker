@@ -6,9 +6,9 @@ name: build_on_tag
 # events but only for the master branch
 on:
   push:
-    branches: [ stable ]
-  tags:
-    - v*
+    branches: [ master ]
+#  tags:
+#    - v*
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,22 +28,26 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set Env
       run: |
-        echo ::set-env name=KANIKO_CACHE_REGISTRY::helm-docker/cache
+        echo ::set-env name=KANIKO_CACHE_REGISTRY::aquaveollc/helm-docker-cache
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
-        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
+        echo ::set-env name=TAG::${GITHUB_REF:10}
+    - name: Test Tag
+      run: |
+        echo $TAG
+        echo ${{ env.TAG }}
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
         registry: docker.io
         # Username used for authentication to the Docker registry
-        username: ${{ secrets.TRAN_DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
-        password: ${{ secrets.TRAN_DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         # Image name
-        image: aquaveollc/helm-docker
+        image: $KANIKO_IMAGE
         # Image tag
-        tag: latest
+        tag: $TAG
         # Enables build cache
         # cache: false
         # Docker registry meant to be used as cache
