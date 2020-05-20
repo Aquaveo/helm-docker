@@ -31,10 +31,11 @@ jobs:
         echo ::set-env name=KANIKO_CACHE_REGISTRY::aquaveollc/helm-docker-cache
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
         echo ::set-env name=TAG::${GITHUB_REF:10}
+        echo ::set-env name=TAG_FULL::${GITHUB_REF}
     - name: Test Tag
       run: |
         echo $TAG
-        echo ${{ env.TAG }}
+        echo $TAG_FULL
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
@@ -45,9 +46,9 @@ jobs:
         # Password used for authentication to the Docker registry
         password: ${{ secrets.DOCKER_PASSWORD }}
         # Image name
-        image: $KANIKO_IMAGE
+        image: aquaveollc/helm-docker
         # Image tag
-        tag: $TAG
+        tag: latest
         # Enables build cache
         # cache: false
         # Docker registry meant to be used as cache
