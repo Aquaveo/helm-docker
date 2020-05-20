@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54d6796a-bc72-45fd-a7b6-67186e38437a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/kaniko-build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/kaniko-build.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/test_push.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,18 +60,50 @@
       <option name="project" value="LOCAL" />
       <updated>1589989492687</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Update docker and kaniko-build.yml&#10;- Create another workflow to push on tag">
+      <created>1589991971521</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589991971521</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- Clean up to test">
+      <created>1589992139046</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992139046</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- Clean up to test">
+      <created>1589992269570</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992269570</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- try to different docker user">
+      <created>1589992555016</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992555016</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Update docker and kaniko-build.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Update docker and kaniko-build.yml" />
+    <MESSAGE value="- Update docker and kaniko-build.yml&#10;- Create another workflow to push on tag" />
+    <MESSAGE value="- Clean up to test" />
+    <MESSAGE value="- try to different docker user" />
+    <option name="LAST_COMMIT_MESSAGE" value="- try to different docker user" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2" timestamp="1589989492620">
-      <screen x="67" y="27" width="1853" height="948" />
+    <state x="693" y="190" width="912" height="735" key="CommitChangelistDialog2" timestamp="1589992554946">
+      <screen x="67" y="27" width="2493" height="1308" />
     </state>
     <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1589989492620" />
+    <state x="693" y="190" width="912" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1589992554946" />
     <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1589989487615">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
@@ -81,10 +112,11 @@
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="247" y="106" width="1482" height="788" key="MergeDialog/67.27.1853.948@67.27.1853.948" timestamp="1589988728710" />
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589989494511">
-      <screen x="67" y="27" width="1853" height="948" />
+    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589992556722">
+      <screen x="67" y="27" width="2493" height="1308" />
     </state>
     <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1589989494511" />
+    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1589992556722" />
     <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589988716714">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
