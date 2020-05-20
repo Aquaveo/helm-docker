@@ -5,7 +5,8 @@ name: build_master_tag
 on:
   push:
     branches: [ master ]
-
+    tags:
+      - v*
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -26,7 +27,13 @@ jobs:
       run: |
         echo ::set-env name=KANIKO_CACHE_REGISTRY::aquaveollc/helm-docker-cache
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
+    - name: Set Tag
+      run: |
         echo ::set-env name=TAG::${GITHUB_REF:10}
+    - name: Set Master Tag
+      if: contains(github.ref, "master")
+      run: |
+        echo ::set-env name=TAG::latest
     - name: Test Tag
       run: |
         echo $TAG

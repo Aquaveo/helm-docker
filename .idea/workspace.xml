@@ -192,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1590010977844</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="- test build tag">
+      <created>1590011500863</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1590011500863</updated>
+    </task>
+    <task id="LOCAL-00023" summary="- test build tag">
+      <created>1590011579043</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1590011579043</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -216,10 +230,10 @@
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="671" y="302" width="641" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1590009864622" />
-    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590010977790">
+    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590011578998">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590010977790" />
+    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590011578998" />
     <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008233544" />
     <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1589989487615">
       <screen x="67" y="27" width="1853" height="948" />
@@ -229,10 +243,10 @@
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="247" y="106" width="1482" height="788" key="MergeDialog/67.27.1853.948@67.27.1853.948" timestamp="1589988728710" />
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590010979004">
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590011580251">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590010979004" />
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590011580251" />
     <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008236118" />
     <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589988716714">
       <screen x="67" y="27" width="1853" height="948" />
