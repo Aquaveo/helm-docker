@@ -26,11 +26,11 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Set Env
-      run: |
-        echo ::set-env name=KANIKO_CACHE_REGISTRY::helm-docker/cache
-        echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
-        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
+#    - name: Set Env
+#      run: |
+#        echo ::set-env name=KANIKO_CACHE_REGISTRY::helm-docker/cache
+#        echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
+#        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
     - name: Kaniko Builder
       uses: aevea/action-kaniko@v0.3.2
       with:
@@ -45,10 +45,8 @@ jobs:
         # Image tag
         tag: latest
         # Enables build cache
-        # cache: false
+        cache: false
         # Docker registry meant to be used as cache
-        # cache_registry: $KANIKO_CACHE_REGISTRY
-        # Dockerfile filename
-        # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
-        build_file: ${{github.workspace}}/Dockerfile  
+        cache_registry: aquaveollc/helm-docker-cache
+        build_file: ${{github.workspace}}/Dockerfile
         
