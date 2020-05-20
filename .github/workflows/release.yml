@@ -7,8 +7,8 @@ name: build_on_tag
 on:
   push:
     branches: [ master ]
-#  tags:
-#    - v*
+  tags:
+    - v*
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,24 +36,24 @@ jobs:
       run: |
         echo $TAG
         echo $TAG_FULL
-    - name: Kaniko Builder
-      uses: aevea/action-kaniko@v0.3.2
-      with:
-        # Docker registry where the image will be pushed
-        registry: docker.io
-        # Username used for authentication to the Docker registry
-        username: ${{ secrets.DOCKER_USERNAME }}
-        # Password used for authentication to the Docker registry
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        # Image name
-        image: aquaveollc/helm-docker
-        # Image tag
-        tag: latest
-        # Enables build cache
-        # cache: false
-        # Docker registry meant to be used as cache
-        # cache_registry: $KANIKO_CACHE_REGISTRY
-        # Dockerfile filename
-        # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
-        build_file: ${{github.workspace}}/Dockerfile
+#    - name: Kaniko Builder
+#      uses: aevea/action-kaniko@v0.3.2
+#      with:
+#        # Docker registry where the image will be pushed
+#        registry: docker.io
+#        # Username used for authentication to the Docker registry
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        # Password used for authentication to the Docker registry
+#        password: ${{ secrets.DOCKER_PASSWORD }}
+#        # Image name
+#        image: aquaveollc/helm-docker
+#        # Image tag
+#        tag: latest
+#        # Enables build cache
+#        # cache: false
+#        # Docker registry meant to be used as cache
+#        # cache_registry: $KANIKO_CACHE_REGISTRY
+#        # Dockerfile filename
+#        # build_file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
+#        build_file: ${{github.workspace}}/Dockerfile
 
