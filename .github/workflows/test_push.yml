@@ -20,12 +20,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-#    - name: Set Env
-#      run: |
-#        echo ::set-env name=KANIKO_CACHE_REGISTRY::helm-docker/cache
-#        echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
-#        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
+    - uses: actions/checkout@master
+    - name: Set Env
+      run: |
+        echo ::set-env name=KANIKO_CACHE_REGISTRY::helm-docker/cache
+        echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
+        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
     - name: Dokcer Build and push to docker hub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
