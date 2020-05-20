@@ -32,7 +32,7 @@ jobs:
     - name: Test Tag
       run: |
         echo $TAG
-    - name: build tag
+    - name: build and push tag
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
@@ -51,7 +51,7 @@ jobs:
         cache_registry: ${{ env.KANIKO_CACHE_REGISTRY }}
         # Dockerfile filename
         build_file: ${{github.workspace}}/Dockerfile
-    - name: build latest
+    - name: build and push latest
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
