@@ -35,7 +35,7 @@ jobs:
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
-        registry: registry.docker.io
+        registry: docker.io
         # Username used for authentication to the Docker registry
         username: ${{ secrets.DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
