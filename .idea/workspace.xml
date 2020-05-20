@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54d6796a-bc72-45fd-a7b6-67186e38437a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_on_tag.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_on_tag.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/push_on_tag.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push_on_tag.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +243,42 @@
       <option name="project" value="LOCAL" />
       <updated>1590013184693</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="- test build tag">
+      <created>1590014069001</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014069001</updated>
+    </task>
+    <task id="LOCAL-00030" summary="- test build tag">
+      <created>1590014086568</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014086568</updated>
+    </task>
+    <task id="LOCAL-00031" summary="- test build tag">
+      <created>1590014260998</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014260998</updated>
+    </task>
+    <task id="LOCAL-00032" summary="- build/push tag and latest">
+      <created>1590014316566</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014316566</updated>
+    </task>
+    <task id="LOCAL-00033" summary="- try tag for commits on all branches and stable">
+      <created>1590074122760</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1590074122760</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -258,17 +295,19 @@
     <MESSAGE value="- test getting tag" />
     <MESSAGE value="- test build multiple images" />
     <MESSAGE value="- test build tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="- test build tag" />
+    <MESSAGE value="- build/push tag and latest" />
+    <MESSAGE value="- try tag for commits on all branches and stable" />
+    <option name="LAST_COMMIT_MESSAGE" value="- try tag for commits on all branches and stable" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="671" y="302" width="641" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590009864622">
+    <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590073766668">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="671" y="302" width="641" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1590009864622" />
-    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590013184646">
+    <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1590073766668" />
+    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590074122710">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590013184646" />
+    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590074122710" />
     <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008233544" />
     <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1589989487615">
       <screen x="67" y="27" width="1853" height="948" />
@@ -282,10 +321,10 @@
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="684" y="183" width="608" height="633" key="RollbackChangesDialog/67.27.1853.948@67.27.1853.948" timestamp="1590012492596" />
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590013185646">
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590074124069">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590013185646" />
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590074124069" />
     <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008236118" />
     <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589988716714">
       <screen x="67" y="27" width="1853" height="948" />

@@ -1,7 +1,7 @@
 # This is a basic workflow to help you get started with Actions
-name: build_master_tag
+name: push_on_tag
 
-# Push to docker hub if tag has been created for master branch
+# Push to docker hub if tag has been created.
 on:
   push:
     tags:
@@ -25,14 +25,10 @@ jobs:
       run: |
         echo ::set-env name=TAG::${GITHUB_REF:10}
         echo ::set-env name=TAG_LATEST::latest
-#    - name: Set Master Tag
-#      if: endsWith(github.ref, '/master')
-#      run: |
-#        echo ::set-env name=TAG::latest
     - name: Test Tag
       run: |
         echo $TAG
-    - name: build tag
+    - name: build and push tag
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
@@ -51,7 +47,7 @@ jobs:
         cache_registry: ${{ env.KANIKO_CACHE_REGISTRY }}
         # Dockerfile filename
         build_file: ${{github.workspace}}/Dockerfile
-    - name: build latest
+    - name: build and push latest
       uses: aevea/action-kaniko@v0.3.2
       with:
         # Docker registry where the image will be pushed
