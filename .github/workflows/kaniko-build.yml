@@ -37,9 +37,9 @@ jobs:
         # Docker registry where the image will be pushed
         registry: docker.io
         # Username used for authentication to the Docker registry
-        username: ${{ secrets.TRAN_DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
-        password: ${{ secrets.TRAN_DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         # Image name
         image: aquaveollc/helm-docker
         # Image tag
