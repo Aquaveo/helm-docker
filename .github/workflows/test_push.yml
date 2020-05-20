@@ -27,17 +27,12 @@ jobs:
 #        echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
 #        echo ::set-env name=TAG::$(echo ${GITHUB_REF:10})
     - name: Dokcer Build and push to docker hub
-      uses: opspresso/action-docker@master
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        args: --docker
-      env:
-        # Username used for authentication to the Docker registry
-        USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        name: aquaveollc/helm-docker-cache
+        username: ${{ secrets.DOCKER_USERNAME }}
         # Password used for authentication to the Docker registry
-        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKERFILE: "Dockerfile"
-        IMAGE_NAME: "aquaveollc/helm-docker"
-        # Image tag
-        TAG_NAME: "v0.0.1"
-        LATEST: "true"
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: ${{github.workspace}}/Dockerfile
+        tags: "latest"
 
