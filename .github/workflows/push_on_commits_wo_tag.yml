@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: build_master_tag
+name: push_commits_no_tag
 
 # Push to docker hub if tag has been created.
 on:
@@ -22,6 +22,7 @@ jobs:
         echo ::set-env name=KANIKO_CACHE_REGISTRY::aquaveollc/helm-docker-cache
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
     - name: Set Tag
+      if: !endsWith(github.ref, '/stable')
       run: |
         echo ::set-env name=TAG::dev-${GITHUB_SHA}
     - name: Set Stable Tag
