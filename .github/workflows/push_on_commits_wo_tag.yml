@@ -22,9 +22,9 @@ jobs:
         echo ::set-env name=KANIKO_CACHE_REGISTRY::aquaveollc/helm-docker-cache
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
     - name: Set Tag
-      if: !endsWith(github.ref, '/stable')
       run: |
         echo ::set-env name=TAG::dev-${GITHUB_SHA}
+      # If the branch is stable, we'll overwrite the TAG to include stable.
     - name: Set Stable Tag
       if: endsWith(github.ref, '/stable')
       run: |
