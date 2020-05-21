@@ -1,10 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 name: build_master_tag
 
-# Push to docker hub if tag has been created for master branch
+# Push to docker hub if tag has been created.
 on:
   push:
-    tags:
+    branches:
       - '*'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -23,12 +23,11 @@ jobs:
         echo ::set-env name=KANIKO_IMAGE::aquaveollc/helm-docker
     - name: Set Tag
       run: |
-        echo ::set-env name=TAG::${GITHUB_REF:10}
-        echo ::set-env name=TAG_LATEST::latest
-#    - name: Set Master Tag
-#      if: endsWith(github.ref, '/master')
-#      run: |
-#        echo ::set-env name=TAG::latest
+        echo ::set-env name=TAG::dev-${GITHUB_SHA}
+    - name: Set Stable Tag
+      if: endsWith(github.ref, '/stable')
+      run: |
+        echo ::set-env name=TAG::stable-${GITHUB_SHA}
     - name: Test Tag
       run: |
         echo $TAG
@@ -45,25 +44,6 @@ jobs:
         image: ${{ env.KANIKO_IMAGE }}
         # Image tag
         tag: ${{ env.TAG }}
-        # Enables build cache
-        cache: true
-        # Docker registry meant to be used as cache
-        cache_registry: ${{ env.KANIKO_CACHE_REGISTRY }}
-        # Dockerfile filename
-        build_file: ${{github.workspace}}/Dockerfile
-    - name: build and push latest
-      uses: aevea/action-kaniko@v0.3.2
-      with:
-        # Docker registry where the image will be pushed
-        registry: docker.io
-        # Username used for authentication to the Docker registry
-        username: ${{ secrets.DOCKER_USERNAME }}
-        # Password used for authentication to the Docker registry
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        # Image name
-        image: ${{ env.KANIKO_IMAGE }}
-        # Image tag
-        tag: ${{ env.TAG_LATEST }}
         # Enables build cache
         cache: true
         # Docker registry meant to be used as cache
