@@ -5,12 +5,8 @@ FROM python:3.7-alpine
 ARG HELM_VERSION=3.0.0
 ARG KUBECTL_VERSION=1.15.0
 
-ENV HELM_REPO_HOST=https://helm.aquaveo.com
-
-ENV K8S_USER=admin \
-    K8S_PASS=none \
-    K8S_NS=default \
-    K8S_CLUSTER=staging-cluster
+# Need to set your HELM_REPO_HOST
+# ENV HELM_REPO_HOST=https://helm...
 
 ADD requirements.txt /tmp/
 RUN set -x \
@@ -26,10 +22,7 @@ RUN set -x \
  && rm -f /var/cache/apk/* \
  # Install python requirements
  && pip install -r /tmp/requirements.txt
-## Setup Helm
-#RUN helm init \
-# && helm repo add aquaveo $HELM_REPO_HOST \
-# && mkdir -p /root/.helm
+
 # Add Helper Utils
 ADD utilities/* /usr/bin/
 RUN chmod 775 /usr/bin/*
