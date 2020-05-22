@@ -1,7 +1,7 @@
 Helm-Docker
 ===========
 
-A simple docker image designed for uploading packaged charts to a helm repo host and deploying app from GitLab to Staging/Production
+A simple docker image designed for uploading packaged charts to a helm repo host and deploying app from GitHub
 
 This README file is for v**1.0.0**.
 
@@ -94,29 +94,3 @@ optional arguments:
                         Maximum number of times to check if all pvc's were
                         deleted
 ```
-
-### `setup_k8s_user`
-When deploying with helm, you must set the user and context in kubectl. This can be done by calling the `setup_k8s_user` helper script or can be set up manually (see below).
-
-To use `setup_k8s_user`, you must have set the following environmental variables:
-- `K8S_USER`: Username to authenticate with (Default: admin)
-- `K8S_PASS`: Password matching `K8S_USER` (Default: none)
-- `K8S_NS`: Namespace to default to (Default: default)
-- `K8S_CLUSTER`: Name of the cluster to connect to (Default: staging-cluster)
-
-The image is pre-populated with two clusters: `staging-cluster` and `production-cluster` 
-
-
-Other Info
-----------
-
-### Manual Setup
-
-If you would like to manually setup the kube config file (instead of using `setup_k8s_user`), run the following commands:
-- `kubectl config set-credentials <cred_name> --username=<user> --password=<password>`
-- `kubectl config set-context <context_name> --user=<cred_name> --namespace=<namespace> --cluster=<cluster>`
-- `kubectl config use-context <context_name>`
-
-`<cred_name>` and `<context_name>` can be set arbitrarily, so long as they are consistent between commands.
-
-The image is pre-populated with two clusters: `staging-cluster` and `production-cluster` 
