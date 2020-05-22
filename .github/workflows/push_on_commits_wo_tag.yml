@@ -28,7 +28,7 @@ jobs:
     - name: Set Stable Tag
       if: endsWith(github.ref, '/stable')
       run: |
-        echo ::set-env name=TAG::stable-${GITHUB_SHA}
+        echo ::set-env name=TAG::stable
     - name: Test Tag
       run: |
         echo $TAG
