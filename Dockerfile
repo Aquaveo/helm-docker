@@ -23,6 +23,10 @@ RUN set -x \
  # Install python requirements
  && pip install -r /tmp/requirements.txt
 
+# Add MyCA to trust list
+# Setup Kubectl
+# Setup Helm
+
 # Add Helper Utils
 ADD utilities/* /usr/bin/
 RUN chmod 775 /usr/bin/*
