@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:stable" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="54d6796a-bc72-45fd-a7b6-67186e38437a" name="Default Changelist" comment="- Update stable">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>crt</find>
-      <find>k8s.conf</find>
-      <find>helm.aquaveo.com</find>
-      <find>HELM_VERSION</find>
-      <find>config</find>
-    </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -40,6 +51,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -296,8 +308,59 @@
       <option name="project" value="LOCAL" />
       <updated>1590075009083</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="- Take out setup_k8s_user since it should not have been in public.&#10;- Remove HELM_REPO_HOST env variable. User need to set this.">
+      <created>1590180121779</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1590180121779</updated>
+    </task>
+    <task id="LOCAL-00037" summary="- Update README.md">
+      <created>1590181346256</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1590181346256</updated>
+    </task>
+    <task id="LOCAL-00038" summary="- Remove aquaveo reference">
+      <created>1595520101185</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1595520101185</updated>
+    </task>
+    <task id="LOCAL-00039" summary="- Use HELM_SINGING_KEY_NAME instead of hard code">
+      <created>1597184827736</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1597184827736</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="stable" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Update docker and kaniko-build.yml" />
@@ -316,38 +379,52 @@
     <MESSAGE value="- build/push tag and latest" />
     <MESSAGE value="- try tag for commits on all branches and stable" />
     <MESSAGE value="- Update stable" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Update stable" />
+    <MESSAGE value="- Take out setup_k8s_user since it should not have been in public.&#10;- Remove HELM_REPO_HOST env variable. User need to set this." />
+    <MESSAGE value="- Update README.md" />
+    <MESSAGE value="- Remove aquaveo reference" />
+    <MESSAGE value="- Use HELM_SINGING_KEY_NAME instead of hard code" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Use HELM_SINGING_KEY_NAME instead of hard code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590073766668">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1590073766668" />
-    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590079496867">
+    <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2" timestamp="1597184827508">
+      <screen x="67" y="27" width="2493" height="1308" />
+    </state>
+    <state x="979" y="104" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1595520148347" />
+    <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1597184827508" />
+    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1597182921634">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590079496867" />
-    <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008233544" />
-    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1589989487615">
-      <screen x="67" y="27" width="1853" height="948" />
-    </state>
-    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog/67.27.1853.948@67.27.1853.948" timestamp="1589989487615" />
+    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog/67.27.1853.948@67.27.1853.948" timestamp="1597182921634" />
     <state x="247" y="106" width="1482" height="788" key="MergeDialog" timestamp="1589988728710">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="247" y="106" width="1482" height="788" key="MergeDialog/67.27.1853.948@67.27.1853.948" timestamp="1589988728710" />
-    <state x="684" y="183" width="608" height="633" key="RollbackChangesDialog" timestamp="1590012492596">
-      <screen x="67" y="27" width="1853" height="948" />
+    <state x="897" y="242" width="608" height="633" key="RollbackChangesDialog" timestamp="1592513652105">
+      <screen x="67" y="27" width="2493" height="1308" />
     </state>
     <state x="684" y="183" width="608" height="633" key="RollbackChangesDialog/67.27.1853.948@67.27.1853.948" timestamp="1590012492596" />
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590075010943">
+    <state x="897" y="242" key="RollbackChangesDialog/67.27.2493.1308@67.27.2493.1308" timestamp="1592513652105" />
+    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597184829062">
+      <screen x="67" y="27" width="2493" height="1308" />
+    </state>
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1595520154028" />
+    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1597184829062" />
+    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595520116313">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590075010943" />
-    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008236118" />
-    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589988716714">
+    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.948@67.27.1853.948" timestamp="1595520116313" />
+    <state x="897" y="320" width="1463" height="721" key="find.popup" timestamp="1593639925273">
+      <screen x="67" y="27" width="2493" height="1308" />
+    </state>
+    <state x="684" y="239" width="1087" height="522" key="find.popup/67.27.1853.948@67.27.1853.948" timestamp="1590618683340" />
+    <state x="897" y="320" width="1463" height="721" key="find.popup/67.27.2493.1308@67.27.2493.1308" timestamp="1593639925273" />
+    <state x="724" y="288" width="529" height="423" key="git4idea.merge.GitMergeDialog" timestamp="1595520137930">
       <screen x="67" y="27" width="1853" height="948" />
     </state>
-    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.948@67.27.1853.948" timestamp="1589988716714" />
+    <state x="724" y="288" width="529" height="423" key="git4idea.merge.GitMergeDialog/67.27.1853.948@67.27.1853.948" timestamp="1595520137930" />
   </component>
 </project>
