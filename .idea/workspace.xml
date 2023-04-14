@@ -1,150 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54d6796a-bc72-45fd-a7b6-67186e38437a" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="54d6796a-bc72-45fd-a7b6-67186e38437a" name="Default Changelist" comment="- Update stable">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push_on_commits_wo_tag.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utilities/setup_k8s_user">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utilities/helm-fresh-deploy">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/utilities/check_for_tag_in_project_registry">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utilities/check_helm_chart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="246">
-                <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>crt</find>
       <find>k8s.conf</find>
       <find>helm.aquaveo.com</find>
-      <find>config</find>
       <find>HELM_VERSION</find>
+      <find>config</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/utilities/check_helm_chart" />
-        <option value="$PROJECT_DIR$/Dockerfile" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="293" />
-    <option name="y" value="47" />
-    <option name="width" value="1390" />
-    <option name="height" value="908" />
-  </component>
+  <component name="ProjectId" id="1c67zBJR7zzvP6Ph3uqMovUcUuy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="helm-docker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-docker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="helm-docker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="helm-docker" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -157,78 +51,303 @@
       <option name="presentableId" value="Default" />
       <updated>1589831387213</updated>
     </task>
+    <task id="LOCAL-00001" summary="- Update docker and kaniko-build.yml">
+      <created>1589989171513</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589989171513</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- Update docker and kaniko-build.yml">
+      <created>1589989492687</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589989492687</updated>
+    </task>
+    <task id="LOCAL-00003" summary="- Update docker and kaniko-build.yml&#10;- Create another workflow to push on tag">
+      <created>1589991971521</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589991971521</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- Clean up to test">
+      <created>1589992139046</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992139046</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- Clean up to test">
+      <created>1589992269570</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992269570</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- try to different docker user">
+      <created>1589992555016</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589992555016</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- test simple docker">
+      <created>1589993600251</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589993600251</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- test simple docker">
+      <created>1589993626716</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589993626716</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- update test">
+      <created>1589993929442</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589993929442</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- update test">
+      <created>1589994010278</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589994010278</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- try my cred">
+      <created>1589994802194</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589994802194</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- try my cred">
+      <created>1589994958649</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1589994958649</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- use aquaveobuilder">
+      <created>1590004521218</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1590004521218</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- test tag">
+      <created>1590008083478</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1590008083478</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- update release">
+      <created>1590008233600</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1590008233600</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- test getting tag">
+      <created>1590009126268</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1590009126268</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- test getting tag">
+      <created>1590009370885</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1590009370885</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- test build multiple images">
+      <created>1590010343449</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1590010343449</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- test build multiple images">
+      <created>1590010440192</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1590010440192</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- test build multiple images">
+      <created>1590010493368</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1590010493368</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- test build tag">
+      <created>1590010977844</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1590010977844</updated>
+    </task>
+    <task id="LOCAL-00022" summary="- test build tag">
+      <created>1590011500863</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1590011500863</updated>
+    </task>
+    <task id="LOCAL-00023" summary="- test build tag">
+      <created>1590011579043</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1590011579043</updated>
+    </task>
+    <task id="LOCAL-00024" summary="- test build tag">
+      <created>1590012247064</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1590012247064</updated>
+    </task>
+    <task id="LOCAL-00025" summary="- test build tag">
+      <created>1590012644006</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1590012644006</updated>
+    </task>
+    <task id="LOCAL-00026" summary="- test build tag">
+      <created>1590012890420</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1590012890420</updated>
+    </task>
+    <task id="LOCAL-00027" summary="- test build tag">
+      <created>1590013031612</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1590013031612</updated>
+    </task>
+    <task id="LOCAL-00028" summary="- test build tag">
+      <created>1590013184693</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1590013184693</updated>
+    </task>
+    <task id="LOCAL-00029" summary="- test build tag">
+      <created>1590014069001</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014069001</updated>
+    </task>
+    <task id="LOCAL-00030" summary="- test build tag">
+      <created>1590014086568</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014086568</updated>
+    </task>
+    <task id="LOCAL-00031" summary="- test build tag">
+      <created>1590014260998</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014260998</updated>
+    </task>
+    <task id="LOCAL-00032" summary="- build/push tag and latest">
+      <created>1590014316566</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1590014316566</updated>
+    </task>
+    <task id="LOCAL-00033" summary="- try tag for commits on all branches and stable">
+      <created>1590074122760</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1590074122760</updated>
+    </task>
+    <task id="LOCAL-00034" summary="- try tag for commits on all branches and stable">
+      <created>1590074566609</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1590074566609</updated>
+    </task>
+    <task id="LOCAL-00035" summary="- Update stable">
+      <created>1590075009083</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1590075009083</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="950" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24972677" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- Update docker and kaniko-build.yml" />
+    <MESSAGE value="- Update docker and kaniko-build.yml&#10;- Create another workflow to push on tag" />
+    <MESSAGE value="- Clean up to test" />
+    <MESSAGE value="- try to different docker user" />
+    <MESSAGE value="- test simple docker" />
+    <MESSAGE value="- update test" />
+    <MESSAGE value="- try my cred" />
+    <MESSAGE value="- use aquaveobuilder" />
+    <MESSAGE value="- test tag" />
+    <MESSAGE value="- update release" />
+    <MESSAGE value="- test getting tag" />
+    <MESSAGE value="- test build multiple images" />
+    <MESSAGE value="- test build tag" />
+    <MESSAGE value="- build/push tag and latest" />
+    <MESSAGE value="- try tag for commits on all branches and stable" />
+    <MESSAGE value="- Update stable" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Update stable" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="246">
-            <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities/setup_k8s_user">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities/helm-fresh-deploy">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities/check_helm_chart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities/check_for_tag_in_project_registry">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590073766668">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="671" y="302" width="713" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1590073766668" />
+    <state x="532" y="145" width="922" height="735" key="CommitChangelistDialog2" timestamp="1590079496867">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="532" y="145" width="912" height="709" key="CommitChangelistDialog2/67.27.1853.948@67.27.1853.948" timestamp="1590079496867" />
+    <state x="693" y="190" width="922" height="735" key="CommitChangelistDialog2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008233544" />
+    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog" timestamp="1589989487615">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="267" y="156" width="1653" height="750" key="DiffContextDialog/67.27.1853.948@67.27.1853.948" timestamp="1589989487615" />
+    <state x="247" y="106" width="1482" height="788" key="MergeDialog" timestamp="1589988728710">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="247" y="106" width="1482" height="788" key="MergeDialog/67.27.1853.948@67.27.1853.948" timestamp="1589988728710" />
+    <state x="684" y="183" width="608" height="633" key="RollbackChangesDialog" timestamp="1590012492596">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="684" y="183" width="608" height="633" key="RollbackChangesDialog/67.27.1853.948@67.27.1853.948" timestamp="1590012492596" />
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590075010943">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="588" y="236" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1590075010943" />
+    <state x="768" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.2493.1308@67.27.2493.1308" timestamp="1590008236118" />
+    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589988716714">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="764" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.948@67.27.1853.948" timestamp="1589988716714" />
   </component>
 </project>
