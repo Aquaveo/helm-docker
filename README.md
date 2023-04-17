@@ -1,13 +1,13 @@
 Helm-Docker
 ===========
 
-A simple docker image designed for uploading packaged charts to a helm repo host and deploying app from GitHub
+A simple docker image designed for uploading packaged charts to a helm repo host and deploying app from a CI/CD system.
 
-This README file is for v**1.0.0**.
+This README file is for a pre-release version, and may not be accurate.
 
-Helm version: *3.0.0*
+Helm version: *3.11.2*
 
-Kubectl version: *1.15.0*
+Kubectl version: *1.26.3*
 
 Versioning
 ----------
@@ -45,6 +45,7 @@ Usage: check_helm_chart <path/to/chart> [--upload]
 ```
     
 In order to use the upload option, you must have defined the following evnironmental variables:
+ - `HELM_REPO_HOST`: The URL of the Helm repo you want to use
  - `HELM_REPO_USERNAME`: The username used to authenticate with the helm repo host
  - `HELM_REPO_PASSWORD`: The password associated with `HELM_REPO_USERNAME`
  - `HELM_KEY_PASSPHRASE`: The passphrase to unlock the signing key

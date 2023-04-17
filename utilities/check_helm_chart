@@ -1,55 +1,117 @@
-#!/bin/sh
+#!/usr/bin/env python3
+"""Check a helm chart for modifications, upload if asked."""
 
-## Exit code legend
-# -2: Unknown error
-# -1: Missing arguments
-#  0: Success (chart matches or chart is new/uploaded)
-#  1: Chart doesn't match
+import argparse
+import filecmp
+import os
+from pathlib import Path
+import requests
+from subprocess import call
+from tempfile import TemporaryDirectory
+import tarfile
 
-set -e  ## Exit on error
 
-TMPDIR=$(mktemp -d)
-if [ -z "$1" ]; then
-    echo "Missing Arguments" >&2
-    echo "Usage: $0 <path/to/chart> [--upload]"
-    echo "Note: Order is important. If specified `--upload` MUST come after `path/to/chart`"
-    exit -1
-fi
+def dirs_are_equal(dir1, dir2):
+    """
+    Compare two directories recursively.
 
-CHARTDIR=$(realpath "$1")
+    Files in each directory are assumed to be equal if their names and contents are equal.
 
-cd ${TMPDIR}
-helm dep up "${CHARTDIR}"
-helm package "${CHARTDIR}"
-LOCAL_PACKAGE=$(ls *.tgz | head -n1)
-REMOTE_PACKAGE=${LOCAL_PACKAGE%%.tgz}.remote.tgz
-RESULT=$(curl ${HELM_REPO_HOST}/charts/${LOCAL_PACKAGE} -so ${REMOTE_PACKAGE}  -w '%{http_code}\n')
-if [ ${RESULT} -eq  404 ]; then
-    echo "Chart not found on remote" >&2
-    if [[ "$2" == "--upload" ]]; then
-        helm package ${CHARTDIR} --sign --key "$3" --keyring ~/.gnupg/secring.gpg
-        echo "Uploading chart..."
-        curl -F "chart=@${LOCAL_PACKAGE}" -F "prov=@${LOCAL_PACKAGE}.prov" ${HELM_REPO_HOST}/api/charts -u ${HELM_REPO_USERNAME}:${HELM_REPO_PASSWORD}
-        echo -e "\nDone."
-    fi
-    exit 0
-elif [ ${RESULT} -ne 200 ]; then
-    echo "Unknown error while trying to retrieve chart from remote" >&2
-    exit -2
-fi
-mkdir local remote
-tar xf ${LOCAL_PACKAGE} -C local
-tar xf ${REMOTE_PACKAGE} -C remote
-for DIR in local remote; do
-    rm -f ${DIR}/**/*.lock
-done
-set +e
-diff -r local remote
-RESULT=$?
-if [ $RESULT -eq 1 ]; then
-    echo "Chart contains changes, but the version number has not been updated!" >&2
-    exit 1
-else
-    echo "No changes detected!"
-fi
-echo "Done."
+    Taken from SO: https://stackoverflow.com/questions/4187564
+
+    @param dir1: First directory path
+    @param dir2: Second directory path
+
+    @return: True if the directory trees are the same and
+        there were no errors while accessing the directories or files,
+        False otherwise.
+   """
+    dirs_cmp = filecmp.dircmp(dir1, dir2)
+    if len(dirs_cmp.left_only) > 0 or len(dirs_cmp.right_only) > 0 or len(dirs_cmp.funny_files) > 0:
+        return False
+    (_, mismatch, errors) = filecmp.cmpfiles(dir1, dir2, dirs_cmp.common_files, shallow=False)
+    if len(mismatch) > 0 or len(errors) > 0:
+        return False
+    for common_dir in dirs_cmp.common_dirs:
+        new_dir1 = os.path.join(dir1, common_dir)
+        new_dir2 = os.path.join(dir2, common_dir)
+        if not dirs_are_equal(new_dir1, new_dir2):
+            return False
+    return True
+
+
+def extract_tar(in_file, dest):
+    """Extract a tgz file to a specified destination."""
+    tar = tarfile.open(in_file, "r:gz")
+    for member in tar:
+        if not member.name.endswith(".lock"):
+            tar.extract(member.name, path=dest)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('chart', type=str,
+                        help='Path to the chart to check.'
+                        )
+    parser.add_argument('--channel', type=str, default=os.environ.get('HELM_REPO_CHANNEL', "stable"),
+                        help="Specify the channel to use on the helm repo"
+                        )
+    parser.add_argument('--password', type=str, default=os.environ.get('HELM_REPO_PASSWORD'),
+                        help="Password to login to helm repo."
+                        )
+    parser.add_argument('--username', type=str, default=os.environ.get('HELM_REPO_USERNAME'),
+                        help="Username to login to helm repo."
+                        )
+    parser.add_argument('--upload', action='store_true',
+                        help="Attempt to upload the chart, if it does not already exist."
+                        )
+    parser.add_argument('--url', type=str, default=os.environ.get('HELM_REPO_URL'),
+                        help="URL of helm repo."
+                        )
+
+    args = parser.parse_args()
+    if args.url is None:
+        print("HELM_REPO_URL must be specified, either through as an envvar, or via --url")
+        exit(-1)
+
+    chartdir = Path(args.chart).resolve()
+    td = TemporaryDirectory()
+    os.chdir(str(td.name))
+
+    call(["helm", "dep", "up", chartdir])
+    call(["helm", "package", chartdir])
+    local_package = next(Path().glob("*.tgz"))
+    remote_package = Path(f"{local_package.stem}.remote.tgz")
+    r = requests.get(f"{args.url}/{args.channel}/charts/{local_package.name}", auth=(args.username, args.password))
+    remote_package.open(mode='wb').write(r.content)
+    if r.status_code == 404:
+        print("Chart not found on remote")
+        if args.upload:
+            print("Uploading Chart")
+            r = requests.post(
+                f"{args.url}/api/{args.channel}/charts",
+                files={'chart': local_package.open(mode='rb')},
+                auth=(args.username, args.password)
+            )
+            if r.status_code != 201:
+                print("Upload Failed!")
+                print("Details:")
+                print(f"Status Code: {r.status_code}")
+                print(r.text)
+            print("Done")
+            exit(0)
+    elif r.status_code != 200:
+        print("Unknown error while trying to retrieve chart from remote")
+        print("Details:")
+        print(f"Status Code: {r.status_code}")
+        print(r.text)
+    Path("local").mkdir()
+    Path("remote").mkdir()
+    extract_tar(local_package, "local")
+    extract_tar(remote_package, "remote")
+    if not dirs_are_equal("local", "remote"):
+        print("Chart contains changes, but the version number has not been updated!")
+        exit(1)
+    print("No changes detected!")
+
+    print("Done.")
