@@ -99,7 +99,7 @@ if __name__ == "__main__":
                 print(f"Status Code: {r.status_code}")
                 print(r.text)
             print("Done")
-            exit(0)
+        exit(0)
     elif r.status_code != 200:
         print("Unknown error while trying to retrieve chart from remote")
         print("Details:")
