@@ -34,8 +34,10 @@ Helper Utilities
 ### `check_helm_chart`
 Checks to see if a helm chart has already been uploaded. If it has, it checks to make sure the local chart is the same as the remote chart. Optionally, it will upload the chart if it has not been already.
 
+**Supports both ChartMuseum-style repositories and GitLab package repositories.**
+
 ```
-Usage: check_helm_chart <path/to/chart> [--upload]
+Usage: check_helm_chart <path/to/chart> [--upload] [--repo-type {chartmuseum,gitlab}]
 
 ## Exit code legend
 # -2: Unknown error
@@ -43,11 +45,87 @@ Usage: check_helm_chart <path/to/chart> [--upload]
 #  0: Success (chart matches or chart is new/uploaded)
 #  1: Chart doesn't match
 ```
-    
-In order to use the upload option, you must have defined the following evnironmental variables:
- - `HELM_REPO_HOST`: The URL of the Helm repo you want to use
- - `HELM_REPO_USERNAME`: The username used to authenticate with the helm repo host
- - `HELM_REPO_PASSWORD`: The password associated with `HELM_REPO_USERNAME`
+
+#### Repository Types
+
+##### ChartMuseum (default behavior)
+```bash
+# Using environment variables
+export HELM_REPO_URL="https://your-chartmuseum.example.com"
+export HELM_REPO_USERNAME="your-username"
+export HELM_REPO_PASSWORD="your-password"
+export HELM_REPO_CHANNEL="stable"
+
+./check_helm_chart /path/to/your/chart --upload
+
+# Using command line arguments
+./check_helm_chart /path/to/your/chart \
+  --repo-type chartmuseum \
+  --url https://your-chartmuseum.example.com \
+  --username your-username \
+  --password your-password \
+  --channel stable \
+  --upload
+```
+
+##### GitLab Package Registry
+```bash
+# Using environment variables
+export HELM_REPO_URL="https://gitlab.example.com"
+export GITLAB_TOKEN="your-gitlab-token"
+export GITLAB_PROJECT_ID="12345"
+export HELM_REPO_CHANNEL="stable"
+
+./check_helm_chart /path/to/your/chart --repo-type gitlab --upload
+
+# Using command line arguments
+./check_helm_chart /path/to/your/chart \
+  --repo-type gitlab \
+  --url https://gitlab.example.com \
+  --token your-gitlab-token \
+  --project-id 12345 \
+  --channel stable \
+  --upload
+```
+
+#### Arguments
+
+- `--repo-type`: Choose between 'chartmuseum' (default) or 'gitlab'
+- `--token`: GitLab access token (required for GitLab, can also use GITLAB_TOKEN env var)
+- `--project-id`: GitLab project ID (required for GitLab, can also use GITLAB_PROJECT_ID env var)
+- `--channel`: Channel/repository name (default: "stable")
+- `--url`: Repository URL
+- `--username`: Username for ChartMuseum authentication
+- `--password`: Password for ChartMuseum authentication
+
+#### Environment Variables
+
+**ChartMuseum:**
+- `HELM_REPO_URL`: URL of the Helm repository
+- `HELM_REPO_USERNAME`: Username for authentication
+- `HELM_REPO_PASSWORD`: Password for authentication
+- `HELM_REPO_CHANNEL`: Channel/repository name (default: "stable")
+
+**GitLab:**
+- `HELM_REPO_URL`: GitLab instance URL (e.g., https://gitlab.example.com)
+- `GITLAB_TOKEN`: Personal access token or project access token
+- `GITLAB_PROJECT_ID`: Numeric project ID
+- `HELM_REPO_CHANNEL`: Channel name (default: "stable")
+
+#### GitLab Token Requirements
+
+For GitLab package registry access, your token needs the following scopes:
+- `read_api` (to download existing charts)
+- `write_repository` (to upload new charts)
+
+You can create a token at: `https://your-gitlab-instance.com/-/profile/personal_access_tokens`
+
+#### Notes
+
+- The script automatically detects chart name and version from `Chart.yaml` when using GitLab
+- GitLab upload uses a different API endpoint structure than ChartMuseum
+- Success codes differ between providers (GitLab: 200/201, ChartMuseum: 201)
+- The script maintains backward compatibility with existing ChartMuseum workflows
  - `HELM_KEY_PASSPHRASE`: The passphrase to unlock the signing key
 
 ### `check_for_tag_in_project_registry`

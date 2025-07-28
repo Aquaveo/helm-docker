@@ -48,33 +48,135 @@ def extract_tar(in_file, dest):
             tar.extract(member.name, path=dest)
 
 
+def get_chart_info(chart_path):
+    """Extract chart name and version from Chart.yaml."""
+    chart_yaml = Path(chart_path) / "Chart.yaml"
+    if not chart_yaml.exists():
+        raise FileNotFoundError(f"Chart.yaml not found in {chart_path}")
+
+    with open(chart_yaml, 'r') as f:
+        chart_data = f.read()
+        # Simple parsing without yaml dependency
+        name = None
+        version = None
+        for line in chart_data.split('\n'):
+            line = line.strip()
+            if line.startswith('name:'):
+                name = line.split(':', 1)[1].strip().strip('"\'')
+            elif line.startswith('version:'):
+                version = line.split(':', 1)[1].strip().strip('"\'')
+
+        if not name or not version:
+            raise ValueError(
+                "Could not parse chart name and version from Chart.yaml")
+
+        return name, version
+
+
+def download_chart_chartmuseum(url, channel, package_name, auth):
+    """Download chart from ChartMuseum-style repository."""
+    download_url = f"{url}/{channel}/charts/{package_name}"
+    return requests.get(download_url, auth=auth)
+
+
+def upload_chart_chartmuseum(url, channel, package_file, auth):
+    """Upload chart to ChartMuseum-style repository."""
+    upload_url = f"{url}/api/{channel}/charts"
+    with open(package_file, 'rb') as f:
+        files = {'chart': f}
+        return requests.post(upload_url, files=files, auth=auth)
+
+
+def download_chart_gitlab(base_url, project_id, package_name, token):
+    """Download chart from GitLab package registry."""
+    # GitLab API URL format:
+    # https://gitlab.example.com/api/v4/projects/:id/packages/helm/
+    # :channel/charts/:chart_name-:chart_version.tgz
+    download_url = (f"{base_url}/api/v4/projects/{project_id}/"
+                    f"packages/helm/stable/charts/{package_name}")
+    headers = {'PRIVATE-TOKEN': token}
+    return requests.get(download_url, headers=headers)
+
+
+def upload_chart_gitlab(base_url, project_id, chart_name, chart_version,
+                        package_file, token, channel="stable"):
+    """Upload chart to GitLab package registry."""
+    # GitLab requires chart name and version in the URL
+    upload_url = (f"{base_url}/api/v4/projects/{project_id}/"
+                  f"packages/helm/api/{channel}/charts")
+    headers = {'PRIVATE-TOKEN': token}
+
+    with open(package_file, 'rb') as f:
+        files = {'chart': (f'{chart_name}-{chart_version}.tgz', f,
+                           'application/gzip')}
+        return requests.post(upload_url, files=files, headers=headers)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('chart', type=str,
-                        help='Path to the chart to check.'
-                        )
-    parser.add_argument('--channel', type=str, default=os.environ.get('HELM_REPO_CHANNEL', "stable"),
-                        help="Specify the channel to use on the helm repo"
-                        )
-    parser.add_argument('--password', type=str, default=os.environ.get('HELM_REPO_PASSWORD'),
-                        help="Password to login to helm repo."
-                        )
-    parser.add_argument('--username', type=str, default=os.environ.get('HELM_REPO_USERNAME'),
-                        help="Username to login to helm repo."
-                        )
+                        help='Path to the chart to check.')
+
+    parser.add_argument('--repo-type', type=str,
+                        choices=['chartmuseum', 'gitlab'],
+                        default='chartmuseum',
+                        help="Type of repository (chartmuseum or gitlab)")
+
+    parser.add_argument('--channel', type=str,
+                        default=os.environ.get('HELM_REPO_CHANNEL', "stable"),
+                        help="Specify the channel to use on the helm repo")
+
+    parser.add_argument('--password', type=str,
+                        default=os.environ.get('HELM_REPO_PASSWORD'),
+                        help="Password for helm repo (ChartMuseum only).")
+
+    parser.add_argument('--username', type=str,
+                        default=os.environ.get('HELM_REPO_USERNAME'),
+                        help="Username for helm repo (ChartMuseum only).")
+
+    parser.add_argument('--token', type=str,
+                        default=os.environ.get('GITLAB_TOKEN'),
+                        help="GitLab access token (GitLab only).")
+
+    parser.add_argument('--project-id', type=str,
+                        default=os.environ.get('GITLAB_PROJECT_ID'),
+                        help="GitLab project ID (GitLab only).")
+
     parser.add_argument('--upload', action='store_true',
-                        help="Attempt to upload the chart, if it does not already exist."
-                        )
-    parser.add_argument('--url', type=str, default=os.environ.get('HELM_REPO_URL'),
-                        help="URL of helm repo."
-                        )
+                        help="Attempt to upload the chart, "
+                             "if it does not already exist.")
+
+    parser.add_argument('--url', type=str,
+                        default=os.environ.get('HELM_REPO_URL'),
+                        help="URL of helm repo.")
 
     args = parser.parse_args()
     if args.url is None:
-        print("HELM_REPO_URL must be specified, either through as an envvar, or via --url")
+        print("HELM_REPO_URL must be specified, either through an envvar or --url")
         exit(-1)
 
+    # Validate arguments based on repository type
+    if args.repo_type == 'gitlab':
+        if args.token is None:
+            print("GitLab token must be specified via --token or "
+                  "GITLAB_TOKEN envvar")
+            exit(-1)
+        if args.project_id is None:
+            print("GitLab project ID must be specified via --project-id or "
+                  "GITLAB_PROJECT_ID envvar")
+            exit(-1)
+    else:  # chartmuseum
+        if args.username is None or args.password is None:
+            print("Username and password must be specified for "
+                  "ChartMuseum repos")
+            exit(-1)
+
     chartdir = Path(args.chart).resolve()
+
+    # Get chart info for GitLab
+    if args.repo_type == 'gitlab':
+        chart_name, chart_version = get_chart_info(chartdir)
+
     td = TemporaryDirectory()
     os.chdir(str(td.name))
 
@@ -82,29 +184,53 @@ if __name__ == "__main__":
     call(["helm", "package", chartdir])
     local_package = next(Path().glob("*.tgz"))
     remote_package = Path(f"{local_package.stem}.remote.tgz")
-    r = requests.get(f"{args.url}/{args.channel}/charts/{local_package.name}", auth=(args.username, args.password))
-    remote_package.open(mode='wb').write(r.content)
+
+    # Download chart based on repository type
+    if args.repo_type == 'gitlab':
+        r = download_chart_gitlab(args.url, args.project_id,
+                                  local_package.name, args.token)
+    else:  # chartmuseum
+        r = download_chart_chartmuseum(args.url, args.channel,
+                                       local_package.name,
+                                       (args.username, args.password))
+
+    if r.status_code != 404:
+        remote_package.open(mode='wb').write(r.content)
+
     if r.status_code == 404:
         print("Chart not found on remote")
         if args.upload:
             print("Uploading Chart")
-            r = requests.post(
-                f"{args.url}/api/{args.channel}/charts",
-                files={'chart': local_package.open(mode='rb')},
-                auth=(args.username, args.password)
-            )
-            if r.status_code != 201:
+
+            # Upload chart based on repository type
+            if args.repo_type == 'gitlab':
+                upload_r = upload_chart_gitlab(args.url, args.project_id,
+                                               chart_name, chart_version,
+                                               local_package, args.token,
+                                               args.channel)
+                success_codes = [200, 201]
+            else:  # chartmuseum
+                upload_r = upload_chart_chartmuseum(args.url, args.channel,
+                                                    local_package,
+                                                    (args.username,
+                                                     args.password))
+                success_codes = [201]
+
+            if upload_r.status_code not in success_codes:
                 print("Upload Failed!")
                 print("Details:")
-                print(f"Status Code: {r.status_code}")
-                print(r.text)
-            print("Done")
+                print(f"Status Code: {upload_r.status_code}")
+                print(upload_r.text)
+                exit(-1)
+            print("Upload successful!")
         exit(0)
     elif r.status_code != 200:
         print("Unknown error while trying to retrieve chart from remote")
         print("Details:")
         print(f"Status Code: {r.status_code}")
         print(r.text)
+        exit(-1)
+
     Path("local").mkdir()
     Path("remote").mkdir()
     extract_tar(local_package, "local")
